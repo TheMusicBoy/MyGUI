@@ -1,0 +1,20 @@
+{
+	"images": {
+		"count": 2,
+		"mas": [
+			{
+				"id": 0,
+				"dir": "assets/jj.png"
+			},
+			{
+				"id": 1,
+				"dir": "assets/bb.png"
+			}
+		]
+	},
+	"fonts": {
+		"count": 0,
+		"mas": [
+		]
+	}
+}

@@ -1,0 +1,7 @@
+﻿*.dll
+Mygui/.vs/Mygui/v17/Browse.VC.db
+Mygui/.vs/Mygui/v17/Browse.VC.db-shm
+Mygui/.vs/Mygui/v17/Browse.VC.db-wal
+Mygui/.vs/Mygui/v17/Browse.VC.opendb
+*.suo
+*.ipch
