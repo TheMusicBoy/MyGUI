@@ -7,20 +7,29 @@
 
 namespace gx {
 
-	enum ObjectType;
+	enum ObjectType {
+		None,
+		Texture,
+		Text,
+		Claster
+	};
+
+	using actType = unsigned int;
 
 	class Object_base {
 	public:
-		Object_base() = delete;
+		Object_base() : _position(0, 0), _scale(1, 1), _rotation(0), _draw(1) {
+		}
 		
 		virtual void draw(sf::RenderWindow&) = NULL;
-		virtual void setPosition(sf::Vector2i) = NULL;
+		virtual void setPosition(sf::Vector2f) = NULL;
 		virtual void setScale(sf::Vector2f) = NULL;
 		virtual void setRotation(float) = NULL;
 		virtual void setDraw(bool) = NULL;
 		virtual ObjectType getType() = NULL;
+		virtual actType check(sf::RenderWindow&) = NULL;
 		
-		inline sf::Vector2i getPosition() {
+		inline sf::Vector2f getPosition() {
 			return _position;
 		}
 		inline sf::Vector2f getScale() {
@@ -35,7 +44,7 @@ namespace gx {
 
 
 	protected:
-		sf::Vector2i _position;
+		sf::Vector2f _position;
 		sf::Vector2f _scale;
 		float _rotation;
 		bool _draw;
@@ -47,39 +56,39 @@ namespace gx {
 		Object(const Object_base*);
 		~Object();
 		
-		__forceinline void draw(sf::RenderWindow& window) {
+		inline void draw(sf::RenderWindow& window) {
 			base_ptr->draw(window);
 		}
-		__forceinline void setPosition(sf::Vector2i new_position) {
+		inline void setPosition(sf::Vector2f new_position) {
 			base_ptr->setPosition(new_position);
 		}
-		__forceinline void setScale(sf::Vector2f new_scale) {
+		inline void setScale(sf::Vector2f new_scale) {
 			base_ptr->setScale(new_scale);
 		}
-		__forceinline void setRotation(float new_rotation) {
+		inline void setRotation(float new_rotation) {
 			base_ptr->setRotation(new_rotation);
 		}
-		__forceinline void setDraw(bool _Val) {
+		inline void setDraw(bool _Val) {
 			base_ptr->setDraw(_Val);
 		}
 
-		__forceinline ObjectType getType() {
+		inline ObjectType getType() {
 			return base_ptr->getType();
 		}
-		__forceinline sf::Vector2i getPosition() {
+		inline sf::Vector2f getPosition() {
 			return base_ptr->getPosition();
 		}
-		__forceinline sf::Vector2f getScale() {
+		inline sf::Vector2f getScale() {
 			return base_ptr->getScale();
 		}
-		__forceinline float getRotation() {
+		inline float getRotation() {
 			return base_ptr->getRotation();
 		}
-		__forceinline bool isDraw() {
+		inline bool isDraw() {
 			return base_ptr->isDraw();
 		}
 
-		__forceinline Object_base* getObject() {
+		inline Object_base* getObject() {
 			return base_ptr;
 		}
 
